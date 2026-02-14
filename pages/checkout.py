@@ -1,6 +1,9 @@
 import streamlit as st
 import time
+from data.styling import apply_standard_styling
+
 st.set_page_config(page_title="Checkout", page_icon="🛒", layout="wide")
+apply_standard_styling()
 
 st.title("🛒 Checkout")
 st.logo("images/LOGO.jpg")
@@ -11,18 +14,17 @@ st.session_state.orders_list = (
 )
 
 
-st.session_state.is_signed_in = st.session_state.is_signed_in if "is_signed_in" in st.session_state else False
+st.session_state.is_signed_in = (
+    st.session_state.is_signed_in if "is_signed_in" in st.session_state else False
+)
 
 
 if st.session_state.is_signed_in == False:
     st.error("Please Sign In before Any Operation !")
     time.sleep(3)
     st.switch_page("../Adel-V1/app.py")
-     
-else : 
-        
 
-
+else:
     st.subheader("📋 Order Summary")
 
     if st.session_state.orders_list:
@@ -36,7 +38,6 @@ else :
             item_counts[name]["quantity"] += 1
             item_counts[name]["price"] = price
 
-        
         st.write("**Item**")
         st.divider()
 
@@ -47,7 +48,6 @@ else :
             price = item_data["price"]
             subtotal = price * quantity
             total += subtotal
-
 
             col1, col2, col3 = st.columns([3, 2, 1])
 
@@ -88,7 +88,6 @@ else :
 
         st.divider()
 
-        
         st.subheader("📝 Delivery Information")
 
         with st.form("checkout_form"):
@@ -101,7 +100,9 @@ else :
                 phone_input = st.text_input(
                     "Phone Number *", placeholder="+20 XXX XXX XXXX"
                 )
-                email_input = st.text_input("Email", placeholder="your.email@example.com")
+                email_input = st.text_input(
+                    "Email", placeholder="your.email@example.com"
+                )
 
             with col2:
                 address_input = st.text_area(
@@ -134,7 +135,9 @@ else :
             col1, col2 = st.columns(2)
 
             with col1:
-                back_btn = st.form_submit_button("← Back to Menu", use_container_width=True)
+                back_btn = st.form_submit_button(
+                    "← Back to Menu", use_container_width=True
+                )
                 if back_btn:
                     st.switch_page("./pages/home.py")
 
@@ -144,7 +147,6 @@ else :
                 )
 
                 if submit_btn:
-                
                     if (
                         not name_input
                         or not phone_input
@@ -153,7 +155,6 @@ else :
                     ):
                         st.error("⚠️ Please fill in all required fields marked with *")
                     else:
-                    
                         st.success("✅ Order placed successfully!")
                         st.balloons()
 
@@ -174,7 +175,6 @@ else :
                         """)
 
                         st.session_state.order_placed = True
-
 
         if st.session_state.get("order_placed", False):
             if st.button("Start New Order", use_container_width=True, type="primary"):

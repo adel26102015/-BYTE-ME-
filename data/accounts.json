@@ -17,5 +17,12 @@
         "email": "adelghonemy15@gmail.com",
         "password": "12345678910",
         "birthdate": "2026-02-05"
+    },
+    {
+        "username": "adel",
+        "phone": "01008520964",
+        "email": "ibrahim.ahmd.net@gmail.com",
+        "password": "12345789",
+        "birthdate": "2026-04-08"
     }
 ]

@@ -1,60 +1,10 @@
 import streamlit as st
-import pages.sign_up as sign_up
-import pages.sign_in as sign_in
 from data.data import categories
+from data.styling import apply_standard_styling
 
 st.set_page_config(page_title="Home", page_icon="🏠", layout="wide")
 
-st.markdown(
-    """
-<style>
-    div.stButton > button {
-        background: linear-gradient(45deg, #FF4B2B, #FF416C);
-        color: white;
-        border: none;
-        border-radius: 25px;
-        padding: 0.5rem 1rem;
-        font-weight: bold;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        transition: all 0.3s ease;
-    }
-
-    div.stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 8px rgba(0,0,0,0.2);
-        background: linear-gradient(45deg, #FF416C, #FF4B2B);
-        color: white;
-    }
-
-    /* Active/Clicked effect */
-    div.stButton > button:active {
-        transform: translateY(0);
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    /* Primary Button Style (Gold/Orange) */
-    div.stButton > button[kind="primary"] {
-        background: linear-gradient(45deg, #FFD700, #FFA500);
-        color: black;
-        border: none;
-    }
-    
-    div.stButton > button[kind="primary"]:hover {
-        background: linear-gradient(45deg, #FFA500, #FFD700);
-        color: black;
-        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-    }
-    
-    [data-testid="stImage"] img {
-        height: 300px;
-        object-fit: cover;
-        width: 100%;
-        border-radius: 15px;
-    }
-</style>
-""",
-    unsafe_allow_html=True,
-)
+apply_standard_styling()
 
 st.title("🍔 BYTE ME")
 st.logo("images/LOGO.jpg")

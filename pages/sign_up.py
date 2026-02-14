@@ -1,5 +1,8 @@
 import streamlit as st
 from data.accounts_data import load_accounts, save_accounts
+from data.styling import apply_standard_styling
+
+apply_standard_styling()
 
 
 def valildate_sign_up_form(
